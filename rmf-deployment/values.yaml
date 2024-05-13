@@ -1,8 +1,8 @@
 
 replicas: 1
-registryUrl: ghcr.io/open-rmf
-builder_ns: ghcr.io/open-rmf/rmf_deployment_template
-hostName: optm.tfk3s.ezey.link
+registryUrl: https://hub.docker.com/repositories/tigerwk
+builder_ns: tigerwk
+hostName: 45.77.171.157
 
 global:
   ROS_DOMAIN_ID: 15
