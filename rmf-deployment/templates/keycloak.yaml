@@ -171,5 +171,5 @@ spec:
   tls:
     - hosts:
         - {{ .Values.hostName | quote }}
-      secretName: tls-certificate-secret-name
+      secretName: tls-certificate-secret-name-ld2s5
 
