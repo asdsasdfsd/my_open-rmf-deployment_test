@@ -181,7 +181,7 @@ spec:
   tls:
     - hosts:
         - {{ .Values.hostName | quote }}
-      secretName: letsencrypt-prod
+      secretName: letsencrypt-prod-65rpv
 
 ---
 apiVersion: v1
@@ -249,7 +249,7 @@ spec:
   tls:
     - hosts:
         - {{ .Values.hostName | quote }}
-      secretName: letsencrypt-prod
+      secretName: letsencrypt-prod-65rpv
 
 ---
 apiVersion: v1
@@ -339,4 +339,4 @@ spec:
   tls:
     - hosts:
         -  {{ .Values.hostName | quote }}
-      secretName: tls-certificate-secret-name-ld2s5
+      secretName: tls-certificate-secret-name-ld2s5-s8x9p
