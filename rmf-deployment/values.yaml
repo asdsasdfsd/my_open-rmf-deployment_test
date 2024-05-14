@@ -2,7 +2,7 @@
 replicas: 1
 registryUrl: https://hub.docker.com/repositories/tigerwk
 builder_ns: tigerwk
-hostName: 45.77.171.157
+hostName: rmf.tfk3s.ezey.link
 
 global:
   ROS_DOMAIN_ID: 15
