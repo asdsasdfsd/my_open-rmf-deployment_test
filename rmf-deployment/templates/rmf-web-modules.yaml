@@ -218,13 +218,13 @@ spec:
           image: {{ .Values.builder_ns }}/rmf-web-dashboard
           ports:
             - containerPort: 80
-          env:
-            - name: REACT_APP_TRAJECTORY_SERVER
-              value: {{ .Values.global.REACT_APP_TRAJECTORY_SERVER | quote }}
-            - name: REACT_APP_RMF_SERVER
-              value: {{ .Values.global.REACT_APP_RMF_SERVER | quote }}
-            - name: REACT_APP_KEYCLOAK_CONFIG
-              value: {{ .Values.global.REACT_APP_KEYCLOAK_CONFIG | quote }}
+          # env:
+          #   - name: REACT_APP_TRAJECTORY_SERVER
+          #     value: {{ .Values.global.REACT_APP_TRAJECTORY_SERVER | quote }}
+          #   - name: REACT_APP_RMF_SERVER
+          #     value: {{ .Values.global.REACT_APP_RMF_SERVER | quote }}
+          #   - name: REACT_APP_KEYCLOAK_CONFIG
+          #     value: {{ .Values.global.REACT_APP_KEYCLOAK_CONFIG | quote }}
 
 ---
 apiVersion: networking.k8s.io/v1
