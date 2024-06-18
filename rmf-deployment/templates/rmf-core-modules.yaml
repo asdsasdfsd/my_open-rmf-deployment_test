@@ -9,7 +9,7 @@ spec:
   hostNetwork: true
   containers:
     - name: rmf-traffic-schedule
-      image: {{ .Values.builder_ns }}/rmf
+      image: {{ .Values.builder_ns_test }}/rmf
       imagePullPolicy: Always
       env:
         - name: RMF_USE_SIM_TIME
@@ -46,7 +46,7 @@ spec:
   hostNetwork: true
   containers:
     - name: rmf-task-dispatcher
-      image: {{ .Values.builder_ns }}/rmf
+      image: {{ .Values.builder_ns_test }}/rmf
       imagePullPolicy: Always
       env:
         - name: RMF_USE_SIM_TIME
@@ -63,8 +63,8 @@ spec:
           value: {{ .Values.global.RMF_SERVER_URI | quote }}
       command: ["/bin/bash"]
       args: 
-       - -c
-       - >
+      - -c
+      - >
         /ros_entrypoint.sh
         ros2 run rmf_task_ros2 rmf_task_dispatcher --ros-args
         -p use_sim_time:=$(RMF_USE_SIM_TIME)
@@ -89,7 +89,7 @@ spec:
   hostNetwork: true
   containers:
     - name: rmf-door-supervisor
-      image: {{ .Values.builder_ns }}/rmf
+      image: {{ .Values.builder_ns_test }}/rmf
       imagePullPolicy: Always
       env:
         - name: {{ .Values.global.DDS_ENV | quote }}
@@ -123,7 +123,7 @@ spec:
   hostNetwork: true
   containers:
     - name: rmf-lift-supervisor
-      image: {{ .Values.builder_ns }}/rmf
+      image: {{ .Values.builder_ns_test }}/rmf
       imagePullPolicy: Always
       env:
         - name: RMF_USE_SIM_TIME
@@ -159,7 +159,7 @@ spec:
   hostNetwork: true
   containers:
     - name: rmf-traffic-blockade
-      image: {{ .Values.builder_ns }}/rmf
+      image: {{ .Values.builder_ns_test }}/rmf
       imagePullPolicy: Always
       env:
         - name: RMF_USE_SIM_TIME
