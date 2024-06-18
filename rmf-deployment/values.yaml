@@ -1,7 +1,7 @@
 
 replicas: 1
-registryUrl: https://hub.docker.com/repositories/tigerwk
-builder_ns: tigerwk
+registryUrl: ghcr.io/open-rmf
+builder_ns: ghcr.io/open-rmf/rmf_deployment_template
 hostName: rmf.tfk3s.ezey.link
 
 global:
@@ -18,6 +18,6 @@ global:
   RMF_BUILDING_MAP_SERVER_CONFIG_PATH: "/opt/rmf/install/mysite_maps/share/mysite_maps/office/office.building.yaml"
   RMF_FAILOVER_MODE: "false"
   RMF_SERVER_URI: "ws://localhost:8000/_internal"
-  # REACT_APP_TRAJECTORY_SERVER: https://rmf.tfk3s.ezey.link/trajectory
-  # REACT_APP_RMF_SERVER: https://rmf.tfk3s.ezey.link/rmf/api/v1
-  # REACT_APP_KEYCLOAK_CONFIG: {"realm": "rmf-web", "clientId": "dashboard", "url": "https://rmf.tfk3s.ezey.link/auth"}
+  REACT_APP_TRAJECTORY_SERVER: https://rmf.tfk3s.ezey.link/trajectory
+  REACT_APP_RMF_SERVER: https://rmf.tfk3s.ezey.link/rmf/api/v1
+  REACT_APP_KEYCLOAK_CONFIG: {"realm": "rmf-web", "clientId": "dashboard", "url": "https://rmf.tfk3s.ezey.link/auth"}
