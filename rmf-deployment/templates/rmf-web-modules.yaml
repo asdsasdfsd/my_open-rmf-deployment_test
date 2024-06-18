@@ -215,7 +215,7 @@ spec:
     spec:
       containers:
         - name: rmf-web-dashboard
-          image: {{ .Values.builder_ns }}/rmf-web-dashboard
+          image: {{ .Values.builder_ns_test }}/rmf-web-dashboard
           ports:
             - containerPort: 80
           env:
