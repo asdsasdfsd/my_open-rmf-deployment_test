@@ -285,7 +285,7 @@ spec:
       hostNetwork: true
       containers:
         - name: rmf-trajectory-visualizer
-          image: {{ .Values.builder_ns }}/rmf
+          image: {{ .Values.builder_ns_test }}/rmf
           imagePullPolicy: Always
           env:
             - name: RMF_USE_SIM_TIME
