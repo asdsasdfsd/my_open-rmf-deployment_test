@@ -100,8 +100,8 @@ spec:
           value: {{ .Values.global.RMW_IMPLEMENTATION | quote }}
       command: ["/bin/bash"]
       args: 
-        - -c
-        - >
+       - -c
+       - >
           /ros_entrypoint.sh
           ros2 run rmf_fleet_adapter door_supervisor
       volumeMounts:
