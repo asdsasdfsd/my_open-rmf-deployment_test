@@ -12,7 +12,7 @@
                 <Discovery>
                         <Peers>
                                 <Peer address="10.42.0.1"/>  <!-- rmf cluster instance -->
-                                <!-- <Peer address="10.42.0.2"/>  other instances -->
+                                <Peer address="45.77.171.157"/>  <!-- other instances -->
                         </Peers>
                         <ParticipantIndex>auto</ParticipantIndex>
                         <MaxAutoParticipantIndex>50</MaxAutoParticipantIndex>
