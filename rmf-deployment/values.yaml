@@ -18,7 +18,7 @@ global:
   RMF_TRAJECTORY_VISUALIZER_LEVEL_NAME: "L1"
   RMF_BUILDING_MAP_SERVER_CONFIG_PATH: "/opt/rmf/install/mysite_maps/share/mysite_maps/office/office.building.yaml"
   RMF_FAILOVER_MODE: "false"
-  RMF_SERVER_URI: "ws://rmf-web-rmf-server:8000/_internal"
+  RMF_SERVER_URI: "ws://localhost:8000/_internal"
   # REACT_APP_TRAJECTORY_SERVER: https://rmf.tfk3s.ezey.link/trajectory
   # REACT_APP_RMF_SERVER: https://rmf.tfk3s.ezey.link/rmf/api/v1
   # REACT_APP_KEYCLOAK_CONFIG: {"realm": "rmf-web", "clientId": "dashboard", "url": "https://rmf.tfk3s.ezey.link/auth"}
