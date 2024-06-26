@@ -184,3 +184,29 @@ spec:
     - name: {{ .Values.global.DDS_CONFIG_VOLUME | quote }}
       configMap:
         name: {{ .Values.global.DDS_CONFIG_VOLUME | quote }}
+
+---
+apiVersion: v1
+kind: Pod
+namespace:
+metadata:
+  name: office 
+spec:
+  restartPolicy: Always
+  containers:
+    - name: office
+      image: {{ .Values.builder_ns }}/rmf
+      command:
+        - "/bin/bash"
+      args:
+        - "-c"
+        - >
+          source /opt/ros/foxy/setup.bash &&
+          ros2 launch rmf_demos_gz_classic office.launch.xml server_uri:=ws://rmf-web-rmf-server.deploy.svc.cluster.local:8000/_internal
+      volumeMounts:
+        - mountPath: {{ .Values.global.DDS_CONFIG_MOUNTPATH | quote }}
+          name: {{ .Values.global.DDS_CONFIG_VOLUME | quote }}
+  volumes:
+    - name: {{ .Values.global.DDS_CONFIG_VOLUME | quote }}
+      configMap:
+        name: {{ .Values.global.DDS_CONFIG_VOLUME | quote }}
