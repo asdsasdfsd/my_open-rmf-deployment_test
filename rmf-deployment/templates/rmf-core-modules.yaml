@@ -63,8 +63,8 @@ spec:
           value: {{ .Values.global.RMF_SERVER_URI | quote }}
       command: ["/bin/bash"]
       args: 
-       - -c
-       - >
+        - -c
+        - >
         /ros_entrypoint.sh
         ros2 run rmf_task_ros2 rmf_task_dispatcher --ros-args
         -p use_sim_time:=$(RMF_USE_SIM_TIME)
