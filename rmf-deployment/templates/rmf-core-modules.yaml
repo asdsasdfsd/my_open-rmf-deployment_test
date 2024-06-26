@@ -195,7 +195,7 @@ spec:
   restartPolicy: Always
   containers:
     - name: office
-      image: {{ .Values.builder_ns }}/rmf
+      image: {{ .Values.builder_ns }}/rmf-test
       command:
         - "/bin/bash"
       args:
