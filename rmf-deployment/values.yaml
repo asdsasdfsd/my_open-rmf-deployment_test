@@ -2,6 +2,7 @@
 replicas: 1
 registryUrl: https://hub.docker.com/repositories/tigerwk
 builder_ns: tigerwk
+builder_ns_test: ghcr.io/open-rmf/rmf_deployment_template
 hostName: rmf.tfk3s.ezey.link
 
 global:
