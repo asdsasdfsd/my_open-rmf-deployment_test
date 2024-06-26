@@ -285,7 +285,7 @@ spec:
       hostNetwork: true
       containers:
         - name: rmf-trajectory-visualizer
-          image: {{ .Values.builder_ns_test }}/rmf
+          image: {{ .Values.builder_ns }}/rmf
           imagePullPolicy: Always
           env:
             - name: RMF_USE_SIM_TIME
@@ -305,8 +305,8 @@ spec:
               /ros_entrypoint.sh
               ros2 launch rmf_visualization visualization.launch.xml
               headless:=1
-              use_sim_time:=$(RMF_USE_SIM_TIME)
-              map_name:=$(RMF_TRAJECTORY_VISUALIZER_LEVEL_NAME)
+              use_sim_time:={{ .Values.global.RMF_USE_SIM_TIME | quote }}
+              map_name:={{ .Values.global.RMF_TRAJECTORY_VISUALIZER_LEVEL_NAME | quote }}
           ports:
             - containerPort: 8006
           volumeMounts:
