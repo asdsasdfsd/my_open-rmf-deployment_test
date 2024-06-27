@@ -185,26 +185,26 @@ spec:
       configMap:
         name: {{ .Values.global.DDS_CONFIG_VOLUME | quote }}
 
-# ---
-# apiVersion: v1
-# kind: Pod
-# metadata:
-#   name: office
-# spec:
-#   restartPolicy: Always
-#   containers:
-#     - name: office
-#       image: {{ .Values.builder_ns }}/rmf-simulation
-#       command:
-#         - "/bin/bash"
-#       args:
-#         - "-c"
-#         - >
-#           /ros_entrypoint.sh ros2 launch rmf_demos_gz office.launch.xml headless:=1 server_uri:=ws://rmf-web-rmf-server.deploy.svc.cluster.local:8000/_internal
-#       volumeMounts:
-#         - mountPath: {{ .Values.global.DDS_CONFIG_MOUNTPATH | quote }}
-#           name: {{ .Values.global.DDS_CONFIG_VOLUME | quote }}
-#   volumes:
-#     - name: {{ .Values.global.DDS_CONFIG_VOLUME | quote }}
-#       configMap:
-#         name: {{ .Values.global.DDS_CONFIG_VOLUME | quote }}
+---
+apiVersion: v1
+kind: Pod
+metadata:
+  name: office
+spec:
+  restartPolicy: Always
+  containers:
+    - name: office
+      image: {{ .Values.builder_ns }}/rmf-simulation
+      command:
+        - "/bin/bash"
+      args:
+        - "-c"
+        - >
+          /ros_entrypoint.sh ros2 launch rmf_demos_gz office.launch.xml headless:=1 server_uri:=ws://rmf-web-rmf-server.deploy.svc.cluster.local:8000/_internal
+      volumeMounts:
+        - mountPath: {{ .Values.global.DDS_CONFIG_MOUNTPATH | quote }}
+          name: {{ .Values.global.DDS_CONFIG_VOLUME | quote }}
+  volumes:
+    - name: {{ .Values.global.DDS_CONFIG_VOLUME | quote }}
+      configMap:
+        name: {{ .Values.global.DDS_CONFIG_VOLUME | quote }}
