@@ -120,7 +120,7 @@ spec:
     spec:
       containers:
         - name: rmf-web-rmf-server
-          image: {{ .Values.builder_ns }}/rmf-web1
+          image: {{ .Values.builder_ns }}/rmf-web2
           imagePullPolicy: Always
           ports:
             - containerPort: 8000
