@@ -305,8 +305,8 @@ spec:
               /ros_entrypoint.sh
               ros2 launch rmf_visualization visualization.launch.xml
               headless:=1
-              use_sim_time:={{ .Values.global.RMF_USE_SIM_TIME | quote }}
-              map_name:={{ .Values.global.RMF_TRAJECTORY_VISUALIZER_LEVEL_NAME | quote }}
+              use_sim_time:=$(RMF_USE_SIM_TIME)
+              map_name:=$(RMF_TRAJECTORY_VISUALIZER_LEVEL_NAME)
           ports:
             - containerPort: 8006
           volumeMounts:

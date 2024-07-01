@@ -26,7 +26,7 @@ spec:
         - >
           /ros_entrypoint.sh
           ros2 run rmf_building_map_tools building_map_server
-          {{ .Values.global.RMF_BUILDING_MAP_SERVER_CONFIG_PATH | quote }}
+          $(RMF_BUILDING_MAP_SERVER_CONFIG_PATH)
       volumeMounts:
         - mountPath: {{ .Values.global.DDS_CONFIG_MOUNTPATH | quote }}
           name: {{ .Values.global.DDS_CONFIG_VOLUME | quote }}
