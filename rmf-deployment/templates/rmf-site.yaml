@@ -88,7 +88,7 @@ spec:
   hostNetwork: true
   containers:
     - name: rmf-simulation-container
-      image: your_registry/rmf-site
+      image: {{ .Values.builder_ns }}/rmf
       imagePullPolicy: Always
       env:
         - name: GAZEBO_VERSION
