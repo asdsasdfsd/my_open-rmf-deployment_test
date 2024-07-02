@@ -93,7 +93,6 @@ spec:
       env:
         - name: GAZEBO_VERSION
           value: 6
-
       command:
         - "/bin/bash"
       args:
