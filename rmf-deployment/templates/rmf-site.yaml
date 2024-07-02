@@ -36,4 +36,46 @@ spec:
         name: {{ .Values.global.DDS_CONFIG_VOLUME | quote }}
 
 ---
+
+apiVersion: v1
+kind: Pod
+metadata:
+  name: fleet-adapter
+spec:
+  restartPolicy: Always
+  hostNetwork: true
+  containers:
+    - name: fleet-adapter
+      image: {{ .Values.builder_ns }}/rmf
+      imagePullPolicy: Always
+      env:
+        - name: CONFIG_FILE
+          value: {{ .Values.global.CONFIG_FILE | quote }}
+        - name: NAV_GRAPH_FILE
+          value: {{ .Values.global.NAV_GRAPH_FILE | quote }}
+        - name: SERVER_URI
+          value: {{ .Values.global.SERVER_URI | quote }}
+        - name: RMF_USE_SIM_TIME
+          value: {{ .Values.global.RMF_USE_SIM_TIME | quote }}
+        - name: {{ .Values.global.DDS_ENV | quote }}
+          value: {{ .Values.global.DDS_CONFIG | quote }}
+        - name: ROS_DOMAIN_ID
+          value: {{ .Values.global.ROS_DOMAIN_ID | quote }}
+        - name: RMW_IMPLEMENTATION
+          value: {{ .Values.global.RMW_IMPLEMENTATION | quote }}
+      command: ["/bin/bash"]
+      args: 
+        - -c
+        - >
+          /ros_entrypoint.sh &&
+          ros2 run rmf_demos_fleet_adapter fleet_adapter --ros-args
+          -c $(CONFIG_FILE) -n $(NAV_GRAPH_FILE) -p use_sim_time:=$(RMF_USE_SIM_TIME) -p server_uri:=$(SERVER_URI)
+      volumeMounts:
+        - mountPath: {{ .Values.global.DDS_CONFIG_MOUNTPATH | quote }}
+          name: {{ .Values.global.DDS_CONFIG_VOLUME | quote }}
+  volumes:
+    - name: {{ .Values.global.DDS_CONFIG_VOLUME | quote }}
+      configMap:
+        name: {{ .Values.global.DDS_CONFIG_VOLUME | quote }}
+
 # Any site specific fleet adapters may be added here
