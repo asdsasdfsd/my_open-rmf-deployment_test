@@ -69,7 +69,7 @@ spec:
         - >
           /ros_entrypoint.sh 
           ros2 run rmf_demos_fleet_adapter fleet_adapter --ros-args
-          -c $(CONFIG_FILE) -n $(NAV_GRAPH_FILE) -p use_sim_time:=$(RMF_USE_SIM_TIME) -p server_uri:=$(SERVER_URI)
+          -p config_file:=$(CONFIG_FILE) -p nav_graph:=$(NAV_GRAPH_FILE) -p use_sim_time:=$(RMF_USE_SIM_TIME) -p server_uri:=$(SERVER_URI)
       volumeMounts:
         - mountPath: {{ .Values.global.DDS_CONFIG_MOUNTPATH | quote }}
           name: {{ .Values.global.DDS_CONFIG_VOLUME | quote }}
