@@ -77,4 +77,34 @@ spec:
       configMap:
         name: {{ .Values.global.DDS_CONFIG_VOLUME | quote }}
 
+---
+
+apiVersion: v1
+kind: Pod
+metadata:
+  name: rmf-simulation-pod
+spec:
+  restartPolicy: Always
+  hostNetwork: true
+  containers:
+    - name: rmf-simulation-container
+      image: your_registry/rmf-site
+      imagePullPolicy: Always
+      env:
+        - name: GAZEBO_VERSION
+          value: 6
+
+      command:
+        - "/bin/bash"
+      args:
+        - "-c"
+        - >
+          /ros_entrypoint.sh ros2 launch rmf_demos_gz simulation.launch.xml map_name:=office gazebo_version:=$(GAZEBO_VERSION)
+      volumeMounts:
+        - mountPath: {{ .Values.global.DDS_CONFIG_MOUNTPATH | quote }}
+          name: {{ .Values.global.DDS_CONFIG_VOLUME | quote }}
+  volumes:
+    - name: {{ .Values.global.DDS_CONFIG_VOLUME | quote }}
+      configMap:
+        name: {{ .Values.global.DDS_CONFIG_VOLUME | quote }}e
 # Any site specific fleet adapters may be added here
