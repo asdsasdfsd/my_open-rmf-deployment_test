@@ -106,5 +106,5 @@ spec:
   volumes:
     - name: {{ .Values.global.DDS_CONFIG_VOLUME | quote }}
       configMap:
-        name: {{ .Values.global.DDS_CONFIG_VOLUME | quote }}e
+        name: {{ .Values.global.DDS_CONFIG_VOLUME | quote }}
 # Any site specific fleet adapters may be added here
