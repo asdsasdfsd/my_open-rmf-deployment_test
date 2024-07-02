@@ -54,7 +54,7 @@ spec:
         - name: NAV_GRAPH_FILE
           value: {{ .Values.global.NAV_GRAPH_FILE | quote }}
         - name: SERVER_URI
-          value: {{ .Values.global.SERVER_URI | quote }}
+          value: {{ .Values.global.RMF_SERVER_URI | quote }}
         - name: RMF_USE_SIM_TIME
           value: {{ .Values.global.RMF_USE_SIM_TIME | quote }}
         - name: {{ .Values.global.DDS_ENV | quote }}
