@@ -53,6 +53,10 @@ spec:
           value: {{ .Values.global.CONFIG_FILE | quote }}
         - name: NAV_GRAPH_FILE
           value: {{ .Values.global.NAV_GRAPH_FILE | quote }}
+        - name: CONFIG_FILE1
+          value: {{ .Values.global.CONFIG_FILE1 | quote }}
+        - name: NAV_GRAPH_FILE1
+          value: {{ .Values.global.NAV_GRAPH_FILE1 | quote }}
         - name: SERVER_URI
           value: {{ .Values.global.RMF_SERVER_URI | quote }}
         - name: RMF_USE_SIM_TIME
@@ -68,7 +72,7 @@ spec:
         - -c
         - >
           /ros_entrypoint.sh 
-          ros2 run fleet_adapter_mir fleet_adapter_mir use_sim_time:=false -c $(CONFIG_FILE) -n $(NAV_GRAPH_FILE) 
+          ros2 run fleet_adapter_mir fleet_adapter_mir use_sim_time:=false -c $(CONFIG_FILE1) -n $(NAV_GRAPH_FILE1) 
       volumeMounts:
         - mountPath: {{ .Values.global.DDS_CONFIG_MOUNTPATH | quote }}
           name: {{ .Values.global.DDS_CONFIG_VOLUME | quote }}
