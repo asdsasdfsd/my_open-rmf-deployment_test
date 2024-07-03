@@ -4,4 +4,4 @@ metadata:
   name: nav-graph-configmap-name  
 data:
   nav_graph.yaml: |-
-  { .Files.Get "nav_gra.yaml" | indent 4}
+{{ .Files.Get "nav_graph.yaml" | indent 4}}
