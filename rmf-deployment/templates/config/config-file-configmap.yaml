@@ -5,4 +5,4 @@ metadata:
   namespace: deploy
 data:
   mir_config.yaml: |-
-    {{ .Files.Get "mir_config.yaml" | indent 4 }}
+{{ .Files.Get "mir_config.yaml" | indent 4 }}
