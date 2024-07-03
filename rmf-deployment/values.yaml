@@ -23,5 +23,5 @@ global:
   # REACT_APP_TRAJECTORY_SERVER: https://rmf.tfk3s.ezey.link/trajectory
   # REACT_APP_RMF_SERVER: https://rmf.tfk3s.ezey.link/rmf/api/v1
   # REACT_APP_KEYCLOAK_CONFIG: {"realm": "rmf-web", "clientId": "dashboard", "url": "https://rmf.tfk3s.ezey.link/auth"}
-  CONFIG_FILE: /opt/rmf/fleet_adapter_mir/configs/mir_config.yaml  
-  NAV_GRAPH_FILE: /opt/rmf/fleet_adapter_mir/configs/nav_graph.yaml 
+  CONFIG_FILE: /opt/rmf/fleet_adapter_mir/def_configs/mir_config.yaml  
+  NAV_GRAPH_FILE: /opt/rmf/fleet_adapter_mir/def_configs/nav_graph.yaml 
