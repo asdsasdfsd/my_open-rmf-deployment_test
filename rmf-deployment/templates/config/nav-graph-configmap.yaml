@@ -3,5 +3,5 @@ kind: ConfigMap
 metadata:
   name: nav-graph-configmap-name  
 data:
-  nav_graph.yaml: |-
-{{ .Files.Get "nav_graph.yaml" | indent 4}}
+  nav_graph.yaml: |
+  {{ include "mir_config.yaml" }}

@@ -3,5 +3,5 @@ kind: ConfigMap
 metadata:
   name: config-file-configmap-name  
 data:
-  mir_config.yaml: |-
-{{ .Files.Get "mir_config.yaml" | indent 4}}
+  mir_config.yaml: |
+  {{ include "mir_config.yaml" }}
