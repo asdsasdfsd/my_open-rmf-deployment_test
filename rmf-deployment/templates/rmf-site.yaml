@@ -68,7 +68,7 @@ spec:
         - -c
         - >
           /ros_entrypoint.sh 
-          ros2 run fleet_adapter_mir fleet_adapter_mir use_sim_time:=false nav_graph_file:=$(NAV_GRAPH_FILE) config_file:=$(CONFIG_FILE)
+          ros2 run fleet_adapter_mir fleet_adapter_mir use_sim_time:=false -c $(CONFIG_FILE) -n $(NAV_GRAPH_FILE) 
       volumeMounts:
         - mountPath: {{ .Values.global.DDS_CONFIG_MOUNTPATH | quote }}
           name: {{ .Values.global.DDS_CONFIG_VOLUME | quote }}
