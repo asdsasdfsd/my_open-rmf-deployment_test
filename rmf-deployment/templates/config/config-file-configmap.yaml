@@ -1,7 +1,7 @@
 apiVersion: v1
 kind: ConfigMap
 metadata:
-  name: config-file-configmap-name
+  name: config-file-configmap
   namespace: deploy
 data:
   mir_config.yaml: |-
