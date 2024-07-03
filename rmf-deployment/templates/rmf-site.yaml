@@ -46,7 +46,7 @@ spec:
   hostNetwork: true
   containers:
     - name: fleet-adapter
-      image: {{ .Values.builder_ns }}/rmf
+      image: {{ .Values.builder_ns }}/fleet_adapter_mir
       imagePullPolicy: Always
       env:
         - name: CONFIG_FILE
@@ -68,42 +68,23 @@ spec:
         - -c
         - >
           /ros_entrypoint.sh 
-          ros2 launch rmf_demos_fleet_adapter fleet_adapter.launch.xml use_sim_time:=false nav_graph_file:=$(NAV_GRAPH_FILE) config_file:=$(CONFIG_FILE)
+          ros2 run fleet_adapter_mir fleet_adapter_mir use_sim_time:=false nav_graph_file:=$(NAV_GRAPH_FILE) config_file:=$(CONFIG_FILE)
       volumeMounts:
         - mountPath: {{ .Values.global.DDS_CONFIG_MOUNTPATH | quote }}
           name: {{ .Values.global.DDS_CONFIG_VOLUME | quote }}
+        - mountPath: {{ .Values.global.NAV_GRAPH_FILE | quote }}
+          name: NAV_GRAPH_FILE
+        - mountPath: {{ .Values.global.CONFIG_FILE | quote }}
+          name: CONFIG_FILE
   volumes:
     - name: {{ .Values.global.DDS_CONFIG_VOLUME | quote }}
       configMap:
         name: {{ .Values.global.DDS_CONFIG_VOLUME | quote }}
-
----
-
-apiVersion: v1
-kind: Pod
-metadata:
-  name: rmf-simulation-pod
-spec:
-  restartPolicy: Always
-  hostNetwork: true
-  containers:
-    - name: rmf-simulation-container
-      image: {{ .Values.builder_ns }}/rmf
-      imagePullPolicy: Always
-      env:
-        - name: GAZEBO_VERSION
-          value: "6"
-      command:
-        - "/bin/bash"
-      args:
-        - "-c"
-        - >
-          /ros_entrypoint.sh ros2 launch rmf_demos_gz simulation.launch.xml map_name:=office gazebo_version:=$(GAZEBO_VERSION)
-      volumeMounts:
-        - mountPath: {{ .Values.global.DDS_CONFIG_MOUNTPATH | quote }}
-          name: {{ .Values.global.DDS_CONFIG_VOLUME | quote }}
-  volumes:
-    - name: {{ .Values.global.DDS_CONFIG_VOLUME | quote }}
+      name: NAV_GRAPH_FILE
       configMap:
-        name: {{ .Values.global.DDS_CONFIG_VOLUME | quote }}
+        name: nav-graph-configmap-name
+      name: CONFIG_FILE
+      configMap:
+        name: config-file-configmap-name
+
 # Any site specific fleet adapters may be added here

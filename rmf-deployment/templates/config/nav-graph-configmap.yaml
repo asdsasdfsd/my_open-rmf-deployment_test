@@ -1,0 +1,7 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: nav-graph-configmap-name  
+data:
+  nav_graph.yaml: |-
+{{ .Files.Get "nav_graph.yaml" | indent 4}}
