@@ -73,17 +73,17 @@ spec:
         - mountPath: {{ .Values.global.DDS_CONFIG_MOUNTPATH | quote }}
           name: {{ .Values.global.DDS_CONFIG_VOLUME | quote }}
         - mountPath: {{ .Values.global.NAV_GRAPH_FILE | quote }}
-          name: NAV_GRAPH_FILE
+          name: nav_graph_file
         - mountPath: {{ .Values.global.CONFIG_FILE | quote }}
-          name: CONFIG_FILE
+          name: config_file
   volumes:
     - name: {{ .Values.global.DDS_CONFIG_VOLUME | quote }}
       configMap:
         name: {{ .Values.global.DDS_CONFIG_VOLUME | quote }}
-      name: NAV_GRAPH_FILE
+      name: nav_graph_file
       configMap:
         name: nav-graph-configmap-name
-      name: CONFIG_FILE
+      name: config_file
       configMap:
         name: config-file-configmap-name
 
